@@ -1,9 +1,12 @@
 package model.dao;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import model.Cliente;
 import model.Conexion;
+import model.exceptions.ClienteNoEncontradoException;
 
 public class DAO_Cliente extends Conexion implements DAO<Cliente>{
 
@@ -12,35 +15,101 @@ public class DAO_Cliente extends Conexion implements DAO<Cliente>{
     }
 
     @Override
-    public void create(Cliente ob) throws SQLException {
+    public void create(Cliente cli) throws SQLException {
         ejecutar("INSERT INTO cliente VALUES(UUID(), "
-                + "'"+ob.getNombre()+"',"
-                + "'"+ob.getDireccion()+"')");
+                + "'"+cli.getNombre()+"',"
+                + "'"+cli.getDireccion()+"')");
     }
 
     @Override
     public List<Cliente> read() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Cliente> lista = new ArrayList<>();
+        
+        ResultSet rs = ejecutar("SELECT * FROM cliente;");
+        
+        Cliente c;
+        while(rs.next()){
+            c = new Cliente();
+            
+            c.setId(rs.getString(1));
+            c.setNombre(rs.getString(2));
+            c.setDireccion(rs.getString(3));
+            
+            lista.add(c);
+        }
+        
+        return lista;
     }
 
     @Override
-    public void update(Cliente ob) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void update(Cliente cli) throws SQLException {
+        ejecutar("UPDATE cliente "
+                + "SET nombre = '"+cli.getNombre()+"', "
+                + "direccion = '"+cli.getDireccion()+"' "
+                + "WHERE id = '"+cli.getId()+"'");
     }
 
     @Override
     public void delete(String id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ejecutar("DELETE FROM cliente WHERE id = '"+id+"'");
     }
 
     @Override
-    public List<Cliente> read(String txt) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Cliente> read(String nombre) throws SQLException {
+        List<Cliente> lista = new ArrayList<>();
+        
+        ResultSet rs = ejecutar("SELECT * FROM cliente "
+                + "WHERE nombre LIKE '%"+nombre+"%';");
+        
+        Cliente c;
+        while(rs.next()){
+            c = new Cliente();
+            
+            c.setId(rs.getString(1));
+            c.setNombre(rs.getString(2));
+            c.setDireccion(rs.getString(3));
+            
+            lista.add(c);
+        }
+        
+        return lista;
     }
 
     @Override
     public Cliente findByID(String id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ResultSet rs = ejecutar("SELECT * FROM cliente "
+                + "WHERE id = '"+id+"';");
+        
+        Cliente c = null;
+        if(rs.next()){
+            c = new Cliente();
+            
+            c.setId(rs.getString(1));
+            c.setNombre(rs.getString(2));
+            c.setDireccion(rs.getString(3));
+        }
+        
+        return c;
+    }
+    
+    public Cliente getClienteByID(String id) throws SQLException, ClienteNoEncontradoException{
+        ResultSet rs = ejecutar("SELECT * FROM cliente "
+                + "WHERE id = '"+id+"';");
+        
+        Cliente c = null;
+        if(rs.next()){
+            c = new Cliente();
+            
+            c.setId(rs.getString(1));
+            c.setNombre(rs.getString(2));
+            c.setDireccion(rs.getString(3));
+        }
+        
+        if(c == null){
+            throw new ClienteNoEncontradoException("El id "+id+" no se encuentra");
+        }
+        
+        return c;
     }
     
     
