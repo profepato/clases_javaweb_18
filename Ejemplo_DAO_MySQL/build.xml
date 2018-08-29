@@ -7,8 +7,8 @@
 <!-- the Compile on Save feature is turned off for the project. -->
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
-<project name="Clase_290818" default="default" basedir=".">
-    <description>Builds, tests, and runs the project Clase_290818.</description>
+<project name="Ejemplo_DAO_MySQL" default="default" basedir=".">
+    <description>Builds, tests, and runs the project Ejemplo_DAO_MySQL.</description>
     <import file="nbproject/build-impl.xml"/>
     <!--
 
