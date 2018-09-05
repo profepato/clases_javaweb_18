@@ -63,6 +63,7 @@ public class TestServlet extends HttpServlet {
                 out.print("<br>");
             }
             
+            
             DAO_Producto dp = new DAO_Producto();
             
             for (Producto p : dp.read()) {

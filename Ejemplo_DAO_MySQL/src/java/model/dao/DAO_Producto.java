@@ -26,7 +26,7 @@ public class DAO_Producto extends Conexion implements DAO<Producto>{
     public List<Producto> read() throws SQLException {
         List<Producto> lista = new ArrayList<>();
         
-        ResultSet rs = ejecutar("SELECT * FROM producto;");
+        ResultSet rs = ejecutar("SELECT * FROM producto ORDER BY precio DESC;");
         
         Producto pro;
         while(rs.next()){
@@ -79,6 +79,8 @@ public class DAO_Producto extends Conexion implements DAO<Producto>{
         return lista;
     }
 
+    
+    // en un futuro --> Singleton --> la lale no quiere
     @Override
     public Producto findByID(String id) throws SQLException {
         ResultSet rs = ejecutar("SELECT * FROM producto "

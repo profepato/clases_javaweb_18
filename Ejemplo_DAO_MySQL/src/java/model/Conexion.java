@@ -19,7 +19,7 @@ public class Conexion {
         con = DriverManager.getConnection(url);
     }
 
-    public ResultSet ejecutar(String query) throws SQLException {
+   protected ResultSet ejecutar(String query) throws SQLException {
         System.out.println(query);
         sen = con.createStatement();
 

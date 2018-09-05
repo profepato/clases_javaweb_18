@@ -10,32 +10,36 @@ public class Producto {
         return id;
     }
 
-    public void setId(String id) {
+    public Producto setId(String id) {
         this.id = id;
+        return this;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    public Producto setNombre(String nombre) {
         this.nombre = nombre;
+        return this;
     }
 
     public int getStock() {
         return stock;
     }
 
-    public void setStock(int stock) {
+    public Producto setStock(int stock) {
         this.stock = stock;
+        return this;
     }
 
     public int getPrecio() {
         return precio;
     }
 
-    public void setPrecio(int precio) {
+    public Producto setPrecio(int precio) {
         this.precio = precio;
+        return this;
     }
     
     
