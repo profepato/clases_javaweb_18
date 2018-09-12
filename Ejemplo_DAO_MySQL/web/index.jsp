@@ -6,12 +6,12 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Menú Principal</h1>
+        <h1>Inicio de sesión</h1>
         
-        <ul>
-            <li>
-                <a href="crearProducto.jsp">Crear producto</a>
-            </li>
-        </ul>
+        <form action="inicioSesion.do" method="post">
+            <input type="password" name="rut" placeholder="Rut: " required>
+            <input type="submit" value="Entrar">
+        </form>
+        <a href="registrarse.jsp">Registrarse</a>
     </body>
 </html>

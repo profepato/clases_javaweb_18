@@ -36,7 +36,7 @@ public class Conexion {
         return sen.executeQuery(query);
     }
 
-    public void close() throws SQLException {
+    protected void close() throws SQLException {
         sen.close();
     }
 }

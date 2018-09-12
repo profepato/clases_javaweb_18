@@ -38,6 +38,8 @@ public class DAO_Cliente extends Conexion implements DAO<Cliente>{
             lista.add(c);
         }
         
+        close();
+        
         return lista;
     }
 
@@ -72,6 +74,8 @@ public class DAO_Cliente extends Conexion implements DAO<Cliente>{
             lista.add(c);
         }
         
+        close();
+        
         return lista;
     }
 
@@ -89,6 +93,8 @@ public class DAO_Cliente extends Conexion implements DAO<Cliente>{
             c.setDireccion(rs.getString(3));
         }
         
+        close();
+        
         return c;
     }
     
@@ -104,6 +110,8 @@ public class DAO_Cliente extends Conexion implements DAO<Cliente>{
             c.setNombre(rs.getString(2));
             c.setDireccion(rs.getString(3));
         }
+        
+        close();
         
         if(c == null){
             throw new ClienteNoEncontradoException("El id "+id+" no se encuentra");

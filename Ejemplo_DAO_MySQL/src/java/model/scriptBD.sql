@@ -16,7 +16,17 @@ CREATE TABLE producto(
     PRIMARY KEY(id)
 );
 
+CREATE TABLE usuario(
+    id INT AUTO_INCREMENT,
+    rut VARCHAR(12),
+    nombre VARCHAR(100),
+    PRIMARY KEY(id)
+);
+
+INSERT INTO usuario VALUES(NULL, '11-1', 'Josesito Chiquitito');
+
 SELECT * FROM cliente;
 SELECT * FROM producto;
+SELECT * FROM usuario;
 
 DROP DATABASE bd_prueba_DAO;
