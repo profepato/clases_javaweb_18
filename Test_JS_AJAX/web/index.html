@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        
+        <input type="number" id="num1" placeholder="numero 1" onkeyup="sumar()">
+        <input type="number" id="num2" placeholder="numero 2" onkeyup="sumar()">
+        <div id="resultado"></div>
+        <script>
+            // Javascript
+            /*MULTI LINE*/
+            
+            //var num = 0;
+            
+            function sumar(){
+                var num1=$("#num1").val();
+                var num2=$("#num2").val();
+                var res=+num1 + +num2;
+                $("#resultado").html(res);
+            }
+            
+            function saludar(){
+                //num++;
+                //console.log("Hola desde función JS "+num);
+                //var tagMensaje = document.getElementById("mensaje");
+                //tagMensaje.innerHTML = "Hola desde la función JS!";
+                
+                var nombre = $("#nombre").val();
+                $("#mensaje").html("Hola qué tal "+nombre+"!");
+            }
+        </script>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        
+        <input 
+            type="text" 
+            id="nombre" 
+            name="nombre"
+            placeholder="Escriba su nombre:"
+            onkeyup="saludar()"
+        />
+        
+        <input type="button" id="btnAlgo" name="btnAlgo" value="Saludar" 
+               onclick="saludar()">
+        <div id="mensaje"></div>
+        
+    </body>
+</html>
